@@ -13,7 +13,14 @@ export const Add = () => {
     })
 
     const handleAddEmotion = (emotion) => {
-        setEmotions(prev => [...prev, emotion])
+        setEmotions(prev => {
+            console.log(prev);
+            if (prev.includes(emotion)) {
+                return prev.filter(item => item !== emotion);
+            } else {
+                return [...prev, emotion];
+            }
+        })
     }
 
     const handleUpload = () => {
@@ -63,12 +70,12 @@ export const Add = () => {
             <button className="w-full bg-zinc-100 rounded-lg h-80" onClick={() => file.current.click()}>Foto o Vidio</button>
             <br />
             <div className="flex py-2">
-                <button className={`px-2 rounded-lg border-2 mr-1 ${emotions[0] === "Happy" ? 'border-blue-400 text-blue-400 bg-blue-100' : ''}`} onClick={() => handleAddEmotion("Happy")}>Feliz</button>
-                <button className={`px-2 rounded-lg border-2 mr-1 ${emotions[1] === "Sad" ? 'border-red-400 text-red-400 bg-red-100' : ''}`} onClick={() => handleAddEmotion("Sad")}>Triste</button>
-                <button className={`px-2 rounded-lg border-2 mr-1 ${emotions[2] === "Neutral" ? 'border-gray-400 text-gray-400 bg-gray-100' : ''}`} onClick={() => handleAddEmotion("Neutral")}>Neutral</button>
-                <button className={`px-2 rounded-lg border-2 mr-1 ${emotions[3] === "Angry" ? 'border-yellow-400 text-yellow-400 bg-yellow-100' : ''}`} onClick={() => handleAddEmotion("Angry")}>Enojado</button>
-                <button className={`px-2 rounded-lg border-2 mr-1 ${emotions[4] === "Scared" ? 'border-purple-400 text-purple-400 bg-purple-100' : ''}`} onClick={() => handleAddEmotion("Scared")}>Asustado</button>
-                <button className={`px-2 rounded-lg border-2 mr-1 ${emotions[5] === "Surprised" ? 'border-green-400 text-green-400 bg-green-100' : ''}`} onClick={() => handleAddEmotion("Surprised")}>Sorprendido</button>
+                <button className={`px-2 rounded-lg border-2 mr-1 ${emotions.includes("Happy") ? 'border-blue-400 text-blue-400 bg-blue-100' : ''}`} onClick={() => handleAddEmotion("Happy")}>Feliz</button>
+                <button className={`px-2 rounded-lg border-2 mr-1 ${emotions.includes("Sad") ? 'border-red-400 text-red-400 bg-red-100' : ''}`} onClick={() => handleAddEmotion("Sad")}>Triste</button>
+                <button className={`px-2 rounded-lg border-2 mr-1 ${emotions.includes("Neutral") ? 'border-gray-400 text-gray-400 bg-gray-100' : ''}`} onClick={() => handleAddEmotion("Neutral")}>Neutral</button>
+                <button className={`px-2 rounded-lg border-2 mr-1 ${emotions.includes("Angry") ? 'border-yellow-400 text-yellow-400 bg-yellow-100' : ''}`} onClick={() => handleAddEmotion("Angry")}>Enojado</button>
+                <button className={`px-2 rounded-lg border-2 mr-1 ${emotions.includes("Scared") ? 'border-purple-400 text-purple-400 bg-purple-100' : ''}`} onClick={() => handleAddEmotion("Scared")}>Asustado</button>
+                <button className={`px-2 rounded-lg border-2 mr-1 ${emotions.includes("Surprised") ? 'border-green-400 text-green-400 bg-green-100' : ''}`} onClick={() => handleAddEmotion("Surprised")}>Sorprendido</button>
             </div>
             <button onClick={handleUpload} className="w-full bg-zinc-200 rounded-lg mt-2 mb-4 h-12" disabled={loading}>{!loading ? "Publicar" : "..."}</button>
         </div>

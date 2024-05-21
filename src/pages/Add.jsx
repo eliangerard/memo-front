@@ -70,7 +70,7 @@ export const Add = () => {
                 <button className={`px-2 rounded-lg border-2 mr-1 ${emotions[4] === "Scared" ? 'border-purple-400 text-purple-400 bg-purple-100' : ''}`} onClick={() => handleAddEmotion("Scared")}>Asustado</button>
                 <button className={`px-2 rounded-lg border-2 mr-1 ${emotions[5] === "Surprised" ? 'border-green-400 text-green-400 bg-green-100' : ''}`} onClick={() => handleAddEmotion("Surprised")}>Sorprendido</button>
             </div>
-            <button onClick={handleUpload} className="w-full bg-zinc-200 rounded-lg mt-2 mb-4 h-12" disabled={loading}>{loading ? "Publicar" : "..."}</button>
+            <button onClick={handleUpload} className="w-full bg-zinc-200 rounded-lg mt-2 mb-4 h-12" disabled={loading}>{!loading ? "Publicar" : "..."}</button>
         </div>
     )
 }

@@ -25,7 +25,7 @@ function Home() {
 
         <div className=''>
             {posts.length > 0 &&
-                posts.map((post) => {
+                posts.reverse().map((post) => {
                     const postDate = new Date(post.taken_at);
                     const currentDate = new Date();
                     const timeDiff = Math.abs(currentDate - postDate);
